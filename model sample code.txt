@@ -1,0 +1,163 @@
+package com.douzone.comet.service.ci.csbcic.models;
+
+import com.douzone.gpd.restful.annotation.DzModel;
+import com.douzone.gpd.restful.annotation.DzModelField;
+import com.google.gson.annotations.SerializedName;
+
+@DzModel(name="csbcic00500_Code", desc="코드 모델")
+public class csbcic00500_Code {
+	@SerializedName("CD_MODULE")
+	@DzModelField(name="cd_module", desc="", colName = "cd_module")
+	private String cd_module;
+	@SerializedName("CD_FIELD")
+	@DzModelField(name="cd_field", desc="", colName = "cd_field")
+	private String cd_field;
+	@SerializedName("CD_SYSDEF")
+	@DzModelField(name="cd_sysdef", desc="", colName = "cd_sysdef")
+	private String cd_sysdef;
+	@SerializedName("NM_SYSDEF")
+	@DzModelField(name="nm_sysdef", desc="", colName = "nm_sysdef")
+	private String nm_sysdef;
+	@SerializedName("NM2_SYSDEF")
+	@DzModelField(name="nm2_sysdef", desc="", colName = "nm2_sysdef")
+	private String nm2_sysdef;
+	@SerializedName("CD_USRDEF")
+	@DzModelField(name="cd_usrdef", desc="", colName = "cd_usrdef")
+	private String cd_usrdef;
+	@SerializedName("NM_USRDEF")
+	@DzModelField(name="nm_usrdef", desc="", colName = "nm_usrdef")
+	private String nm_usrdef;
+	@SerializedName("NM2_USRDEF")
+	@DzModelField(name="nm2_usrdef", desc="", colName = "nm2_usrdef")
+	private String nm2_usrdef;
+	@SerializedName("YN_SYSCODE")
+	@DzModelField(name="yn_syscode", desc="", colName = "yn_syscode")
+	private String yn_syscode;
+	@SerializedName("YN_DEFAULT")
+	@DzModelField(name="yn_default", desc="", colName = "yn_default")
+	private String yn_default;
+	@SerializedName("CD_FLAG1")
+	@DzModelField(name="cd_flag1", desc="", colName = "cd_flag1")
+	private String cd_flag1;
+	@SerializedName("CD_FLAG2")
+	@DzModelField(name="cd_flag2", desc="", colName = "cd_flag2")
+	private String cd_flag2;
+	@SerializedName("CD_LFAG3")
+	@DzModelField(name="cd_lfag3", desc="", colName = "cd_lfag3")
+	private String cd_lfag3;
+	@SerializedName("ID_INSERT")
+	@DzModelField(name="id_insert", desc="", colName = "id_insert")
+	private String id_insert;
+	@SerializedName("DTS_INSERT")
+	@DzModelField(name="dts_insert", desc="", colName = "dts_insert")
+	private String dts_insert;
+	@SerializedName("ID_UPDATE")
+	@DzModelField(name="id_update", desc="", colName = "id_update")
+	private String id_update;
+	@SerializedName("DTS_UPDATE")
+	@DzModelField(name="dts_update", desc="", colName = "dts_update")
+	private String dts_update;
+	public String getCd_module() {
+		return cd_module;
+	}
+	public void setCd_module(String cd_module) {
+		this.cd_module = cd_module;
+	}
+	public String getCd_field() {
+		return cd_field;
+	}
+	public void setCd_field(String cd_field) {
+		this.cd_field = cd_field;
+	}
+	public String getCd_sysdef() {
+		return cd_sysdef;
+	}
+	public void setCd_sysdef(String cd_sysdef) {
+		this.cd_sysdef = cd_sysdef;
+	}
+	public String getNm_sysdef() {
+		return nm_sysdef;
+	}
+	public void setNm_sysdef(String nm_sysdef) {
+		this.nm_sysdef = nm_sysdef;
+	}
+	public String getNm2_sysdef() {
+		return nm2_sysdef;
+	}
+	public void setNm2_sysdef(String nm2_sysdef) {
+		this.nm2_sysdef = nm2_sysdef;
+	}
+	public String getCd_usrdef() {
+		return cd_usrdef;
+	}
+	public void setCd_usrdef(String cd_usrdef) {
+		this.cd_usrdef = cd_usrdef;
+	}
+	public String getNm_usrdef() {
+		return nm_usrdef;
+	}
+	public void setNm_usrdef(String nm_usrdef) {
+		this.nm_usrdef = nm_usrdef;
+	}
+	public String getNm2_usrdef() {
+		return nm2_usrdef;
+	}
+	public void setNm2_usrdef(String nm2_usrdef) {
+		this.nm2_usrdef = nm2_usrdef;
+	}
+	public String getYn_syscode() {
+		return yn_syscode;
+	}
+	public void setYn_syscode(String yn_syscode) {
+		this.yn_syscode = yn_syscode;
+	}
+	public String getYn_default() {
+		return yn_default;
+	}
+	public void setYn_default(String yn_default) {
+		this.yn_default = yn_default;
+	}
+	public String getCd_flag1() {
+		return cd_flag1;
+	}
+	public void setCd_flag1(String cd_flag1) {
+		this.cd_flag1 = cd_flag1;
+	}
+	public String getCd_flag2() {
+		return cd_flag2;
+	}
+	public void setCd_flag2(String cd_flag2) {
+		this.cd_flag2 = cd_flag2;
+	}
+	public String getCd_lfag3() {
+		return cd_lfag3;
+	}
+	public void setCd_lfag3(String cd_lfag3) {
+		this.cd_lfag3 = cd_lfag3;
+	}
+	public String getId_insert() {
+		return id_insert;
+	}
+	public void setId_insert(String id_insert) {
+		this.id_insert = id_insert;
+	}
+	public String getDts_insert() {
+		return dts_insert;
+	}
+	public void setDts_insert(String dts_insert) {
+		this.dts_insert = dts_insert;
+	}
+	public String getId_update() {
+		return id_update;
+	}
+	public void setId_update(String id_update) {
+		this.id_update = id_update;
+	}
+	public String getDts_update() {
+		return dts_update;
+	}
+	public void setDts_update(String dts_update) {
+		this.dts_update = dts_update;
+	}
+	
+}

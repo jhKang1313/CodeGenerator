@@ -1,0 +1,26 @@
+@DzApi(url="/csbcic00600_list_header", desc="기준정보설정 - 조회", httpMethod=DzRequestMethod.GET)
+public List<csbcic00600_BasicInformation> csbcic00600_list_header(
+		@DzParam(key="cd_menu", desc="메뉴코드", paramType=DzParamType.QueryString) String cd_menu,
+		@DzParam(key="cd_mng", desc="관리항목코드", paramType=DzParamType.QueryString) String cd_mng,
+		@DzParam(key="keyword", desc="텍스트", paramType=DzParamType.QueryString) String keyword) throws Exception {
+	
+	List<csbcic00600_BasicInformation> BasicInfomationItems = new ArrayList<csbcic00600_BasicInformation>();
+	try {
+		HashMap<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("P_CD_MENU", cd_menu);
+		parameters.put("P_CD_MNG", cd_mng);
+		parameters.put("P_KEYWORD", keyword);
+
+		String selectHeaderSql = QueryGenerator.get(this.getClass(), "csbcic00600_list_header.ini", parameters);
+		SqlPack so = new SqlPack();
+		so.setStoreProcedure(false);
+		so.setSqlText(selectHeaderSql);
+		BasicInfomationItems = this.queryForModel(so, csbcic00600_BasicInformation.class);
+	}catch (DzApplicationRuntimeException e) {			
+		throw e;
+		
+	}catch (Exception e) {			
+		throw e;
+	}
+	return BasicInfomationItems;			
+}

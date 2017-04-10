@@ -1,0 +1,181 @@
+@DzApi(url="/csbcic00700_save", desc="관리항목등록 - 저장", httpMethod=DzRequestMethod.POST)
+public boolean csbcic00700_save(
+		@DzParam(key="dataSource_h", desc="관리항목", paramType=DzParamType.Body) DzGridModel<csbcic00700_ManagementItem> dataSource_h,
+		@DzParam(key="dataSource_l", desc="관리항목내역", paramType=DzParamType.Body) DzGridModel<csbcic00700_ManagementDetailItem> dataSource_l) throws Exception {
+	//트랜잭션 선언
+	DbTransaction trans = null;
+	try {
+		
+		/*ServletRequestAttributes sra = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		
+		HttpServletRequest request = sra.getRequest();
+		String body = request.getReader().lines().collect(Collectors.joining());
+	    */
+        
+		//트랜잭션 시작
+		trans = this.beginTransaction();
+
+		List<csbcic00700_ManagementItem> headerAdded = dataSource_h.getAdded();
+		List<csbcic00700_ManagementItem> headerUpdated = dataSource_h.getUpdated();
+		List<csbcic00700_ManagementItem> headerDeleted = dataSource_h.getDeleted();
+		
+		List<csbcic00700_ManagementDetailItem> lineAdded = dataSource_l.getAdded();
+		List<csbcic00700_ManagementDetailItem> lineUpdated = dataSource_l.getUpdated();
+		List<csbcic00700_ManagementDetailItem> lineDeleted = dataSource_l.getDeleted();
+		
+		
+		if(headerAdded != null){
+			for(csbcic00700_ManagementItem item : headerAdded){
+				HashMap<String, Object> parameters = new HashMap<String, Object>();
+				
+				parameters.put("P_CD_MODULE", item.getCd_module());
+				parameters.put("P_CD_MNG", item.getCd_mng());
+				parameters.put("P_NM_MNG", item.getNm_mng());
+				parameters.put("P_NM2_MNG", item.getNm2_mng());
+				parameters.put("P_FG_TYPE", item.getFg_type());
+				parameters.put("P_CD_DATATYPE", item.getCd_datatype());
+				parameters.put("P_DC_DEFAULT", item.getDc_default());
+				parameters.put("P_FG_CONTROL", item.getFg_control());
+				parameters.put("P_YN_EDIT", item.getYn_edit());
+				parameters.put("P_YN_USE", item.getYn_use());
+				parameters.put("P_DC_MNG", item.getDc_mng());
+				parameters.put("P_DC2_MNG", item.getDc2_mng());
+				parameters.put("P_TX_SQL", item.getTx_sql());
+				parameters.put("P_NM_TABLE", item.getNm_table());
+				parameters.put("P_DT_DUE", item.getDt_due());
+				parameters.put("P_ID_INSERT", "douzone");		//this.getUserId() 에서 Error 남...
+				parameters.put("P_DTS_INSERT", null);
+			
+				
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_insert.ini", parameters);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		if(headerUpdated != null){
+			for(csbcic00700_ManagementItem item : headerUpdated){
+				
+				HashMap<String, Object> parameters = new HashMap<String, Object>();
+				parameters.put("P_CD_MODULE", item.getCd_module());
+				parameters.put("P_CD_MNG", item.getCd_mng());
+				
+				parameters.put("P_NM_MNG", item.getNm_mng());
+				parameters.put("P_NM2_MNG", item.getNm2_mng());
+				parameters.put("P_TP_MNGFORM", item.getTp_mngform());
+				parameters.put("P_FG_TYPE", item.getFg_type());
+				parameters.put("P_CD_DATATYPE", item.getCd_datatype());
+				parameters.put("P_DC_DEFAULT", item.getDc_default());
+				parameters.put("P_FG_CONTROL", item.getFg_control());
+				parameters.put("P_YN_EDIT", item.getYn_edit());
+				parameters.put("P_YN_USE", item.getYn_use());
+				parameters.put("P_DC_MNG", item.getDc_mng());
+				parameters.put("P_DC2_MNG", item.getDc2_mng());
+				parameters.put("P_TX_SQL", item.getTx_sql());
+				parameters.put("P_NM_TABLE", item.getNm_table());
+				parameters.put("P_DT_DUE", item.getDt_due());
+				parameters.put("P_ID_UPDATE", "douzone");
+				parameters.put("P_DTS_UPDATE", null);
+				
+				
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_update.ini", parameters);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		if(headerDeleted != null){
+			for(csbcic00700_ManagementItem item : headerDeleted){
+				HashMap<String, Object> parameters = new HashMap<String, Object>();
+				
+				parameters.put("P_CD_MODULE", item.getCd_module());
+				parameters.put("P_CD_MNG", item.getCd_mng());
+				                    
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_delete.ini", parameters);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		
+		if(lineAdded != null){
+			for(csbcic00700_ManagementDetailItem item : lineAdded){
+				HashMap<String, Object> params = new HashMap<String, Object>();
+				params.put("P_CD_MODULE", item.getCd_module());
+				params.put("P_CD_MNG", item.getCd_mng());
+				params.put("P_CD_MNG_DTL", item.getCd_mng_dtl());
+				params.put("P_NM_MNG_DTL", item.getNm_mng_dtl());
+				params.put("P_NM2_MNG_DTL", item.getNm2_mng_dtl());
+				params.put("P_YN_USE", item.getYn_use());
+				params.put("P_YN_SYSCODE", item.getYn_syscode());
+				params.put("P_FG_APPRNG", item.getFg_apprng());
+				params.put("P_DC_APPCO", item.getDc_appco());
+				params.put("P_DC_MNG", item.getDc_mng());
+				params.put("P_DC2_MNG", item.getDc2_mng());
+				params.put("P_DT_DUE", item.getDt_due());
+				params.put("P_ID_INSERT", "douzone");
+				params.put("P_DTS_INSERT", null);
+				
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_line_insert.ini", params);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		if(lineUpdated != null){
+			for(csbcic00700_ManagementDetailItem item : lineUpdated){
+				HashMap<String, Object> params = new HashMap<String, Object>();
+				params.put("P_CD_MODULE", item.getCd_module());
+				params.put("P_CD_MNG", item.getCd_mng());
+				params.put("P_CD_MNG_DTL", item.getCd_mng_dtl());
+				params.put("P_NM_MNG_DTL", item.getNm_mng_dtl());
+				params.put("P_NM2_MNG_DTL", item.getNm2_mng_dtl());
+				params.put("P_YN_USE", item.getYn_use());
+				params.put("P_YN_SYSCODE", item.getYn_syscode());
+				params.put("P_FG_APPRNG", item.getFg_apprng());
+				params.put("P_DC_APPCO", item.getDc_appco());
+				params.put("P_DC_MNG", item.getDc_mng());
+				params.put("P_DC2_MNG", item.getDc2_mng());
+				params.put("P_DT_DUE", item.getDt_due());
+				params.put("P_ID_UPDATE", "douzone");
+				params.put("P_DTS_UPDATE", null);
+				
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_line_update.ini", params);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		if(lineDeleted != null){
+			for(csbcic00700_ManagementDetailItem item : lineDeleted){
+				HashMap<String, Object> params = new HashMap<String, Object>();
+				params.put("P_CD_MODULE", item.getCd_module());
+				params.put("P_CD_MNG", item.getCd_mng());
+				params.put("P_CD_MNG_DTL", item.getCd_mng_dtl());
+				
+				String saveQuery = QueryGenerator.get(this.getClass(), "csbcic00700_save_line_delete.ini", params);
+				SqlPack so = new SqlPack();
+				so.setStoreProcedure(false);
+				so.setSqlText(saveQuery);
+				this.update(so);
+			}
+		}
+		trans.commit();
+	}catch (DzApplicationRuntimeException e) {
+		if(trans != null){
+			trans.rollback();
+		}
+		throw e;
+	}catch (Exception e) {
+		if(trans != null){
+			trans.rollback();
+		}
+		throw e;
+	}
+	return true;			
+}
